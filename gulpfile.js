@@ -13,13 +13,13 @@ gulp.task('default', ['coffee'], function() { })
 gulp.task('coffee', function() {
   return streamqueue({ objectMode: true },
     gulp.src('src/**/*.js')
-      .pipe(rimraf())
-  	// gulp.src('src/**/*.coffee')
-   //    .pipe(coffeelint())
-   //    .pipe(coffeelint.reporter())
-   //    .pipe(sourcemaps.init())
-   //    .pipe(coffee())
-   //    .pipe(sourcemaps.write())
-   //    .pipe(gulp.dest(function(file) { return file.base; }))
+      .pipe(rimraf()),
+  	gulp.src('src/**/*.coffee')
+      .pipe(coffeelint())
+      .pipe(coffeelint.reporter())
+      .pipe(sourcemaps.init())
+      .pipe(coffee())
+      .pipe(sourcemaps.write())
+      .pipe(gulp.dest(function(file) { return file.base; }))
   )
 });
